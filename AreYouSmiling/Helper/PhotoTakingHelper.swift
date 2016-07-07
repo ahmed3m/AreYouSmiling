@@ -24,7 +24,7 @@ class PhotoTakingHelper: NSObject {
     }
     
     func showAlertController() {
-        let alertController = UIAlertController(title: nil, message: "Where would you like to use the picture from?", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: "Where would you like to get the picture from?", preferredStyle: .ActionSheet)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)

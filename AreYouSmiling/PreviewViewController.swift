@@ -54,13 +54,13 @@ class PreviewViewController: UIViewController {
 extension PreviewViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(photos.count)
         return photos.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("previewCell", forIndexPath: indexPath) as! PreviewTableViewCell
         cell.previewImageView.image = photos[indexPath.row]
+        cell.emojiLabel.text = "🙂"
         return cell
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class PreviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var emojiLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

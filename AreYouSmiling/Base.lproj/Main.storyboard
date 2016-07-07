@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="previewCell" rowHeight="150" id="9uR-L9-Nix" customClass="PreviewTableViewCell" customModule="AreYouSmiling" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="previewCell" rowHeight="150" id="9uR-L9-Nix" customClass="PreviewTableViewCell" customModule="AreYouSmiling" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9uR-L9-Nix" id="Iej-7G-sNH">
@@ -37,14 +37,23 @@
                                                         <constraint firstAttribute="width" secondItem="bHx-Ig-Mmk" secondAttribute="height" multiplier="1:1" id="JCt-Ku-bRA"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-cK-KkL">
+                                                    <rect key="frame" x="391" y="39" width="143" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bHx-Ig-Mmk" firstAttribute="centerY" secondItem="Iej-7G-sNH" secondAttribute="centerY" id="9KV-Q6-3yf"/>
+                                                <constraint firstItem="rBZ-cK-KkL" firstAttribute="trailing" secondItem="Iej-7G-sNH" secondAttribute="trailing" multiplier="0.89" id="Dhf-ya-Ndh"/>
                                                 <constraint firstItem="bHx-Ig-Mmk" firstAttribute="top" secondItem="Iej-7G-sNH" secondAttribute="topMargin" id="JWD-24-y19"/>
+                                                <constraint firstItem="rBZ-cK-KkL" firstAttribute="centerY" secondItem="Iej-7G-sNH" secondAttribute="centerY" id="Oal-Q1-d0K"/>
                                                 <constraint firstItem="bHx-Ig-Mmk" firstAttribute="leading" secondItem="Iej-7G-sNH" secondAttribute="trailing" multiplier="0.11" id="XRH-ND-2ye"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="emojiLabel" destination="rBZ-cK-KkL" id="9j2-uQ-A8U"/>
                                             <outlet property="previewImageView" destination="bHx-Ig-Mmk" id="voC-gG-pv1"/>
                                         </connections>
                                     </tableViewCell>
