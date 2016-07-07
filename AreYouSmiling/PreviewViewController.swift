@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
@@ -20,20 +21,6 @@ class PreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        let apiToContact = "https://api.projectoxford.ai/emotion/v1.0/recognize"
-        Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    print(json)
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-         */
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +30,27 @@ class PreviewViewController: UIViewController {
 
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
-            // take image and pass it to the api, and recieve info
+            let imageData = UIImageJPEGRepresentation(image!, 0.8)
+            let headers = [   // The headers are configurations done when calling an api
+                "Content-Type": "application/json",
+                "Ocp-Apim-Subscription-Key": "ed0a6aa43a044651b5efe67de5ac4ae8"
+            ]
+            let apiToContact = "https://api.projectoxford.ai/emotion/v1.0/recognize"  // That's the request URL to communicate with the api
+            
+            // The parameters are things we'd like to pass to the api. It's always an array of dictionaries
+            let paramters: [String: AnyObject] = ["url": imageData!] // there's an issue with imageData. Doesn't seem to be supported
+            // Used "encoding: .JSON" to specify that the parameters are in JSON format
+            Alamofire.request(.POST, apiToContact, headers: headers, parameters: paramters).validate().responseJSON() { response in
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        print(json)
+                    }
+                case .Failure(let error):
+                    print(error)
+                }
+            }
             self.photos.append(image!)
             self.tableView.reloadData()
         }
