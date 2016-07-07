@@ -30,33 +30,54 @@ class PreviewViewController: UIViewController {
 
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
-            let imageData = UIImageJPEGRepresentation(image!, 0.8)
-            let headers = [   // The headers are configurations done when calling an api
-                "Content-Type": "application/json",
-                "Ocp-Apim-Subscription-Key": "ed0a6aa43a044651b5efe67de5ac4ae8"
-            ]
-            let apiToContact = "https://api.projectoxford.ai/emotion/v1.0/recognize"  // That's the request URL to communicate with the api
-            
-            // The parameters are things we'd like to pass to the api. It's always an array of dictionaries
-            let paramters: [String: AnyObject] = ["url": imageData!] // there's an issue with imageData. Doesn't seem to be supported
-            // Used "encoding: .JSON" to specify that the parameters are in JSON format
-            Alamofire.request(.POST, apiToContact, headers: headers, parameters: paramters).validate().responseJSON() { response in
-                switch response.result {
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        print(json)
+            let parameters = [
+                "entities" : "true",
+                "faceRectangles": "true",
+                ]
+            let imageData = UIImagePNGRepresentation(image!)
+
+            // CREATE AND SEND REQUEST
+            let urlRequest = self.urlRequestWithComponents("https://api.projectoxford.ai/emotion/v1.0/recognize", parameters: parameters, imageData: imageData!)
+            Alamofire.upload(urlRequest.0, data: urlRequest.1)
+                .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+                    print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+                }.responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+                    if let error = response.result.error {
+                        print(error)
+                    } else {
+                        let emotion = JSON(response.result.value ?? [])
+                        print(emotion)
                     }
-                case .Failure(let error):
-                    print(error)
-                }
-            }
+                })
             self.photos.append(image!)
             self.tableView.reloadData()
         }
     }
+    
+    func urlRequestWithComponents(urlString:String, parameters:Dictionary<String, String>, imageData:NSData) -> (URLRequestConvertible, NSData) {
+        // create url request to send
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
+        
+        // please use your own key to upload images
+        mutableURLRequest.setValue("ed0a6aa43a044651b5efe67de5ac4ae8", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        mutableURLRequest.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        
+        // create upload data to send
+        let uploadData = NSMutableData()
+        // add image
+        uploadData.appendData(imageData)
+        // add parameters
+        for (key, value) in parameters {
+            uploadData.appendData("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        }
+        // return URLRequestConvertible and NSData
+        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
+    }
 
 }
+
+
 
 extension PreviewViewController: UITableViewDataSource {
     
