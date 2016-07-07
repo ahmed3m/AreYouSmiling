@@ -31,7 +31,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-Ig-Mmk">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-Ig-Mmk">
                                                     <rect key="frame" x="66" y="8" width="134" height="134"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bHx-Ig-Mmk" secondAttribute="height" multiplier="1:1" id="JCt-Ku-bRA"/>
@@ -49,6 +49,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ewu-5z-Rsa"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqK-Rk-uyW">
                                 <rect key="frame" x="274" y="545" width="53" height="40"/>
@@ -72,6 +75,9 @@
                             <constraint firstItem="OPD-fF-cfs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kh9-FB-kA8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="OPD-fF-cfs" id="E4v-hv-TFA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
