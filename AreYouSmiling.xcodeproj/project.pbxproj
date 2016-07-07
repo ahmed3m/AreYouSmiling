@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E28038E11D2D72AB00834440 /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */; };
 		E28038E41D2D743400834440 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28038E31D2D743400834440 /* PhotoTakingHelper.swift */; };
+		E2E4DD381D2E05360000B162 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4DD371D2E05360000B162 /* Emoji.swift */; };
 		E2F94F841D2D5BAC0035EFF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F94F831D2D5BAC0035EFF2 /* AppDelegate.swift */; };
 		E2F94F861D2D5BAC0035EFF2 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F94F851D2D5BAC0035EFF2 /* PreviewViewController.swift */; };
 		E2F94F891D2D5BAC0035EFF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2F94F871D2D5BAC0035EFF2 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		659C16B1C11FA44207DEE3AD /* Pods_AreYouSmiling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouSmiling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		E28038E31D2D743400834440 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		E2E4DD371D2E05360000B162 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		E2F94F801D2D5BAC0035EFF2 /* AreYouSmiling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AreYouSmiling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F94F831D2D5BAC0035EFF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2F94F851D2D5BAC0035EFF2 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreviewViewController.swift; path = ../PreviewViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */,
+				E2E4DD371D2E05360000B162 /* Emoji.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E4DD381D2E05360000B162 /* Emoji.swift in Sources */,
 				E28038E11D2D72AB00834440 /* PreviewTableViewCell.swift in Sources */,
 				E2F94F861D2D5BAC0035EFF2 /* PreviewViewController.swift in Sources */,
 				E28038E41D2D743400834440 /* PhotoTakingHelper.swift in Sources */,

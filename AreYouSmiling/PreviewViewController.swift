@@ -60,7 +60,7 @@ extension PreviewViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("previewCell", forIndexPath: indexPath) as! PreviewTableViewCell
         cell.previewImageView.image = photos[indexPath.row]
-        cell.emojiLabel.text = "🙂"
+        cell.emojiLabel.text = Emoji.contempt.rawValue
         return cell
     }
 }
