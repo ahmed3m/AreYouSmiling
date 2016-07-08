@@ -78,6 +78,16 @@ class PreviewViewController: UIViewController {
         // return URLRequestConvertible and NSData
         return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let emojiPictureViewController = segue.destinationViewController as! EmojiPictureViewController
+        emojiPictureViewController.localImage = photos[(tableView.indexPathForSelectedRow?.row)!]
+        emojiPictureViewController.localEmoji = emoji[(tableView.indexPathForSelectedRow?.row)!]
+    }
+    
+    @IBAction func unwindToPreviewViewController(segue: UIStoryboardSegue) {
+        
+    }
 
 }
 
