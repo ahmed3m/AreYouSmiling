@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct Emotions {
+class Emotions {
     let sadness: Double
     let anger: Double
     let happiness: Double
