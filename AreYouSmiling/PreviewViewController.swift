@@ -18,6 +18,8 @@ class PreviewViewController: UIViewController {
     var photoTakingHelper: PhotoTakingHelper?
     var photos: [UIImage] = []
     @IBOutlet weak var tableView: UITableView!
+    var emotions: Emotions?
+    var emoji: Emoji = Emoji.anger
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +48,12 @@ class PreviewViewController: UIViewController {
                         print(error)
                     } else {
                         let emotion = JSON(response.result.value ?? [])
-                        print(emotion)
+                        self.emotions = Emotions(json: emotion)
+                        self.emoji = Emoji.happiness
+                        self.photos.append(image!)
+                        self.tableView.reloadData()
                     }
                 })
-            self.photos.append(image!)
-            self.tableView.reloadData()
         }
     }
     
@@ -88,7 +91,7 @@ extension PreviewViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("previewCell", forIndexPath: indexPath) as! PreviewTableViewCell
         cell.previewImageView.image = photos[indexPath.row]
-        cell.emojiLabel.text = Emoji.contempt.rawValue
+        cell.emojiLabel.text = emoji.rawValue
         return cell
     }
 }

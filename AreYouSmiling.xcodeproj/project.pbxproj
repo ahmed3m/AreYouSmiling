@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E257B5DB1D2EF63E001F33C2 /* Emotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E257B5DA1D2EF63E001F33C2 /* Emotions.swift */; };
 		E28038E11D2D72AB00834440 /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */; };
 		E28038E41D2D743400834440 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28038E31D2D743400834440 /* PhotoTakingHelper.swift */; };
 		E2E4DD381D2E05360000B162 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4DD371D2E05360000B162 /* Emoji.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		4C8F717EB869A7AA41A10D2A /* Pods-AreYouSmiling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouSmiling.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouSmiling/Pods-AreYouSmiling.debug.xcconfig"; sourceTree = "<group>"; };
 		659C16B1C11FA44207DEE3AD /* Pods_AreYouSmiling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouSmiling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E257B5DA1D2EF63E001F33C2 /* Emotions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emotions.swift; sourceTree = "<group>"; };
 		E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		E28038E31D2D743400834440 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		E2E4DD371D2E05360000B162 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				E28038E01D2D72AB00834440 /* PreviewTableViewCell.swift */,
 				E2E4DD371D2E05360000B162 /* Emoji.swift */,
+				E257B5DA1D2EF63E001F33C2 /* Emotions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2E4DD381D2E05360000B162 /* Emoji.swift in Sources */,
+				E257B5DB1D2EF63E001F33C2 /* Emotions.swift in Sources */,
 				E28038E11D2D72AB00834440 /* PreviewTableViewCell.swift in Sources */,
 				E2F94F861D2D5BAC0035EFF2 /* PreviewViewController.swift in Sources */,
 				E28038E41D2D743400834440 /* PhotoTakingHelper.swift in Sources */,
