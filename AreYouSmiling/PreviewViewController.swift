@@ -50,8 +50,8 @@ class PreviewViewController: UIViewController {
                         let emotion = JSON(response.result.value ?? [])
                         self.emotions = Emotions(json: emotion)
                         let bestEmotion = self.emotions?.getBestEmotion()
-                        self.emoji.append((self.emotions?.getRightEmoji(bestEmotion!))!)
-                        self.photos.append(image!)
+                        self.emoji.insert((self.emotions?.getRightEmoji(bestEmotion!))!, atIndex: 0)
+                        self.photos.insert(image!, atIndex: 0)
                         self.tableView.reloadData()
                     }
                 })
