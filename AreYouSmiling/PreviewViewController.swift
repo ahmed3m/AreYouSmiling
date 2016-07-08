@@ -19,7 +19,7 @@ class PreviewViewController: UIViewController {
     var photos: [UIImage] = []
     @IBOutlet weak var tableView: UITableView!
     var emotions: Emotions?
-    var emoji: Emoji = Emoji.anger
+    var emoji: [Emoji] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class PreviewViewController: UIViewController {
                 "entities" : "true",
                 "faceRectangles": "true",
                 ]
-            let imageData = UIImagePNGRepresentation(image!)
+            let imageData = UIImageJPEGRepresentation(image!, 0.3)
 
             // CREATE AND SEND REQUEST
             let urlRequest = self.urlRequestWithComponents("https://api.projectoxford.ai/emotion/v1.0/recognize", parameters: parameters, imageData: imageData!)
@@ -49,7 +49,8 @@ class PreviewViewController: UIViewController {
                     } else {
                         let emotion = JSON(response.result.value ?? [])
                         self.emotions = Emotions(json: emotion)
-                        self.emoji = Emoji.happiness
+                        let bestEmotion = self.emotions?.getBestEmotion()
+                        self.emoji.append((self.emotions?.getRightEmoji(bestEmotion!))!)
                         self.photos.append(image!)
                         self.tableView.reloadData()
                     }
@@ -57,7 +58,7 @@ class PreviewViewController: UIViewController {
         }
     }
     
-    func urlRequestWithComponents(urlString:String, parameters:Dictionary<String, String>, imageData:NSData) -> (URLRequestConvertible, NSData) {
+    func urlRequestWithComponents(urlString: String, parameters: Dictionary<String, String>, imageData: NSData) -> (URLRequestConvertible, NSData) {
         // create url request to send
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
@@ -91,7 +92,7 @@ extension PreviewViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("previewCell", forIndexPath: indexPath) as! PreviewTableViewCell
         cell.previewImageView.image = photos[indexPath.row]
-        cell.emojiLabel.text = emoji.rawValue
+        cell.emojiLabel.text = emoji[indexPath.row].rawValue
         return cell
     }
 }
